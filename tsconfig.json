@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "target":"ESNext",
+        "lib": ["esnext"],
+        "types": [
+            "@types/node",
+            "@types/google-apps-script"
+        ],
+        "strict":true,
+        "moduleResolution":"node"
+    }
+}
