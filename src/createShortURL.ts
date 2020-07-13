@@ -1,16 +1,20 @@
 export function createShortenURL(url: string): string {
-    const BITLY_ACCESS_TOKEN = ScriptProperties.getProperty(
-        'BITLY_ACCESS_TOKEN'
-    );
-    const endpoint = `https://api-ssl.bitly.com/v3/shorten?access_token=${BITLY_ACCESS_TOKEN}%longUrl=${encodeURIComponent(
-        url
-    )}`;
+    const token = ScriptProperties.getProperty('BITLY_ACCESS_TOKEN');
 
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
-        method: 'get',
-        contentType: 'application/json;',
+        method: 'post',
+        payload: JSON.stringify({ long_url: url }),
+        headers: { Authorization: `Bearer ${token}` },
+        contentType: 'application/json',
     };
-    const result = UrlFetchApp.fetch(endpoint, options);
-    const json = JSON.parse(result.getContentText('utf-8'));
-    return json.data.url;
+    try {
+        const result = UrlFetchApp.fetch(
+            'https://api-ssl.bitly.com/v4/shorten',
+            options
+        );
+        return JSON.parse(result.getContentText('utf-8')).data.url;
+    } catch (error) {
+        // 失敗したら元のURLを返す
+        return url;
+    }
 }
