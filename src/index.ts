@@ -1,5 +1,6 @@
 import { ScrapboxNotifyData } from './scrapboxNotifyData';
 import { sendToLine } from './sendToLine';
+import { createShortURL } from './createShortURL';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,7 +17,10 @@ function doPost(e: any): void {
                 notice.text.replace(
                     /<(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-)]*)\|(.*?)>/g,
                     '$2'
-                ) + `\n${hr}\nby ${notice.author_name}\n${notice.title_link}`
+                ) +
+                `\n${hr}\nby ${notice.author_name}\n${createShortURL(
+                    notice.title_link
+                )}`
         )
         .reduce((sum, message) => `${sum}\n${hr}\n${message}`);
 
