@@ -12,7 +12,7 @@ export function createShortURL(url: string): string {
             'https://api-ssl.bitly.com/v4/shorten',
             options
         );
-        return JSON.parse(result.getContentText('utf-8')).data.url;
+        return JSON.parse(result.getContentText('utf-8')).link;
     } catch (error) {
         // 失敗したら元のURLを返す
         return url;
