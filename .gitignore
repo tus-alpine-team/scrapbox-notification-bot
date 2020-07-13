@@ -102,6 +102,3 @@ dist
 
 # TernJS port file
 .tern-port
-
-# ignore files including Script ID
-.clasp.json
