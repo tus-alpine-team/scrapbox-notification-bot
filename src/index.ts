@@ -1,6 +1,6 @@
 import { ScrapboxNotifyData } from './scrapboxNotifyData';
 import { sendToLine } from './sendToLine';
-import { createShortURL } from './createShortURL';
+import { createShortURL } from '.na /createShortURL';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -16,7 +16,7 @@ function doPost(e: any): void {
             (notice) =>
                 notice.text.replace(
                     /<(https?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-)]*)\|(.*?)>/g,
-                    '$2'
+                    createShortURL('$2')
                 ) +
                 `\n${hr}\nby ${notice.author_name}\n${createShortURL(
                     notice.title_link
