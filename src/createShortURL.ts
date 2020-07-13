@@ -1,4 +1,4 @@
-export function createShortenURL(url: string): string {
+export function createShortURL(url: string): string {
     const token = ScriptProperties.getProperty('BITLY_ACCESS_TOKEN');
 
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
