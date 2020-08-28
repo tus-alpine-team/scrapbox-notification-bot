@@ -29,6 +29,11 @@ function getURLs(): string[] {
 }
 export function flushURLs(): string[] {
     const urls = getURLs();
+    const scriptProperties = PropertiesService.getScriptProperties();
+    if (scriptProperties === null) {
+        console.error('PropertiesService is not found.');
+        return [];
+    }
     scriptProperties.setProperty('PAGE_NAME_CACHE', '');
     return urls;
 }
