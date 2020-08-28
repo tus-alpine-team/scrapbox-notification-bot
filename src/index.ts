@@ -15,6 +15,7 @@ function doPost(e: any): void {
         hr,
         '本日は以下の記事が更新されました。',
         ...flushURLs().map((url) => ` ･ ${url}`),
+        '詳細は https://scrapbox.io/stream/tus-alpine/ を御覧ください',
     ];
     sendToLine(result.join('\n'));
 }
