@@ -22,7 +22,9 @@ function getURLs(): string[] {
     }
     const cachedTitles = scriptProperties
         .getProperty('PAGE_NAME_CACHE')
-        .split(' ');
+        .split(' ')
+        // 空文字を除外する
+        .filter((url) => url != '');
     return cachedTitles.map(
         (title) => `https://${wiki_domain}/${project_name}/${title}`
     );
