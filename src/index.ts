@@ -17,17 +17,6 @@ function postMessage(): void {
     sendToLine(result.join('\n'));
 }
 
-// 更新情報を貯める
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function doPost(e: any): void {
-    const data = JSON.parse(e.postData.getDataAsString()) as ScrapboxNotifyData;
-
-    // 更新されたページのURLを取得する
-    const urls = data.attachments.map((notice) => notice.title_link);
-    cacheURLs(urls);
-}
-
 // 20:00に更新情報を投げるように設定する
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function setTrigger(): void {
