@@ -17,7 +17,7 @@ function postMessage(): void {
     sendToLine(result.join('\n'));
 }
 
-// 20:00に更新情報を投げるように設定する
+// 大体20:00に更新情報を投げるように設定する
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function setTrigger(): void {
     //作成済みのtriggerがあったら全て消す
